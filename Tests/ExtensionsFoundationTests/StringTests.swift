@@ -23,5 +23,4 @@ class StringTests: XCTestCase {
         // Then
         XCTAssertEqual("abc", trimmed)
     }
-
 }
