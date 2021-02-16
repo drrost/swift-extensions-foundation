@@ -16,8 +16,4 @@ public extension String {
     func split(_ speparator: String) -> [String] {
         (self as NSString).components(separatedBy: speparator)
     }
-
-    func fileExists() -> Bool {
-        FileManager.default.fileExists(atPath: self)
-    }
 }
