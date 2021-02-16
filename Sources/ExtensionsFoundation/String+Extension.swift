@@ -12,4 +12,8 @@ public extension String {
     func trim() -> String {
         self.trimmingCharacters(in: .whitespaces)
     }
+
+    func split(_ speparator: String) -> [String] {
+        (self as NSString).components(separatedBy: speparator)
+    }
 }
