@@ -41,4 +41,17 @@ class StringTestSplit: XCTestCase {
         XCTAssertEqual("qwerty", array[1])
         XCTAssertEqual("asdfg", array[2])
     }
+
+    func testSeparatorNotFound() {
+        // Given
+        let string = "abcdef.xyz.qwerty.xyz.asdfg"
+        let separator = ".xyzz."
+
+        // When
+        let array = string.split(separator)
+
+        // Then
+        XCTAssertEqual(1, array.count)
+        XCTAssertEqual("abcdef.xyz.qwerty.xyz.asdfg", array[0])
+    }
 }
