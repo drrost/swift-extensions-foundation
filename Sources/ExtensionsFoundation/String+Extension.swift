@@ -16,4 +16,9 @@ public extension String {
     func split(_ speparator: String) -> [String] {
         (self as NSString).components(separatedBy: speparator)
     }
+
+    init(contentsOf path: String) throws {
+        let url = URL.init(fileURLWithPath: path)
+        self = try String(contentsOf: url)
+    }
 }
