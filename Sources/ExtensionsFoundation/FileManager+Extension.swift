@@ -23,4 +23,14 @@ public extension FileManager {
         let documentsDirectory = paths[0]
         return documentsDirectory.path
     }
+
+    static func createFile(_ path: String) throws {
+        let url = URL.init(fileURLWithPath: path)
+        try "".write(to: url, atomically: true, encoding: .utf8)
+    }
+
+    static func deleteFile(_ path: String) throws {
+        let url = URL.init(fileURLWithPath: path)
+        try FileManager.default.removeItem(at: url)
+    }
 }

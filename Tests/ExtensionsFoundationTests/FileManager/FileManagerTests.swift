@@ -22,4 +22,24 @@ class FileManagerTests: XCTestCase {
         XCTAssertTrue(path.hasSuffix("/Documents"))
         XCTAssertFalse(path.hasPrefix("file://"))
     }
+
+    func testCreateFile() {
+        // Given
+        let path = FileManager.getDocumentsDirectory().appending("test.txt")
+        if FileManager.exists(path) {
+            try! FileManager.deleteFile(path)
+        }
+
+        // When
+        do {
+            try FileManager.createFile(path)
+        } catch {
+            print(error)
+            XCTAssertTrue(false, "Call should not throw")
+        }
+
+        // Then
+        XCTAssertTrue(FileManager.exists(path))
+        try! FileManager.deleteFile(path)
+    }
 }
