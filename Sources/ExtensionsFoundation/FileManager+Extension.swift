@@ -26,11 +26,21 @@ public extension FileManager {
 
     static func createFile(_ path: String) throws {
         let url = URL.init(fileURLWithPath: path)
+        let pathDir = (path as NSString).deletingLastPathComponent
+        try createDirectory(pathDir)
         try "".write(to: url, atomically: true, encoding: .utf8)
     }
 
-    static func deleteFile(_ path: String) throws {
+    // Deletes file or directory
+    //
+    static func delete(_ path: String) throws {
         let url = URL.init(fileURLWithPath: path)
         try FileManager.default.removeItem(at: url)
+    }
+
+    static func createDirectory(_ path: String) throws {
+        let url = URL.init(fileURLWithPath: path)
+        try FileManager.default.createDirectory(
+            at: url, withIntermediateDirectories: true, attributes: nil)
     }
 }

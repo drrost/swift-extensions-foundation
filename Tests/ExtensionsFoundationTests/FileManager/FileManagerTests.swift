@@ -27,7 +27,7 @@ class FileManagerTests: XCTestCase {
         // Given
         let path = FileManager.getDocumentsDirectory().appending("test.txt")
         if FileManager.exists(path) {
-            try! FileManager.deleteFile(path)
+            try! FileManager.delete(path)
         }
 
         // When
@@ -40,6 +40,47 @@ class FileManagerTests: XCTestCase {
 
         // Then
         XCTAssertTrue(FileManager.exists(path))
-        try! FileManager.deleteFile(path)
+        try! FileManager.delete(path)
+    }
+
+    func testCreateFileWithDir() {
+        // Given
+        let path = FileManager.getDocumentsDirectory().appending("dir/test.txt")
+        if FileManager.exists(path) {
+            try! FileManager.delete(path)
+        }
+
+        // When
+        do {
+            try FileManager.createFile(path)
+        } catch {
+            print(error)
+            XCTAssertTrue(false, "Call should not throw")
+        }
+
+        // Then
+        XCTAssertTrue(FileManager.exists(path))
+        try! FileManager.delete(path)
+    }
+
+    func testCreateDirWithIntermediates() {
+        // Given
+        let pathRoot = FileManager.getDocumentsDirectory().appending("dir1")
+        if FileManager.exists(pathRoot) {
+            try! FileManager.delete(pathRoot)
+        }
+        let pathFull = FileManager.getDocumentsDirectory().appending("dir1/dir2/dir3")
+
+        // When
+        do {
+            try FileManager.createDirectory(pathFull)
+        } catch {
+            print(error)
+            XCTAssertTrue(false, "Call should not throw")
+        }
+
+        // Then
+        XCTAssertTrue(FileManager.exists(pathFull))
+        try! FileManager.delete(pathRoot)
     }
 }
