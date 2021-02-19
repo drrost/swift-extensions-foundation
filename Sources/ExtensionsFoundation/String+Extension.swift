@@ -21,4 +21,9 @@ public extension String {
         let url = URL.init(fileURLWithPath: path)
         self = try String(contentsOf: url)
     }
+
+    func appendingPathComponent(_ component: String) -> String {
+        let path = (self as NSString).appendingPathComponent(component)
+        return (path as NSString).standardizingPath
+    }
 }
