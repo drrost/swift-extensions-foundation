@@ -65,7 +65,11 @@ class StringRegexTests: XCTestCase {
         let text = "some text with \"NamE that we want to find"
 
         // When
-        // Then
-        XCTAssertThrowsError(try text.regexFirst(regex))
+        do {
+            _ = try text.regexFirst(regex)
+        } catch {
+            // Then
+            XCTAssertEqual(error.localizedDescription, "No matches found")
+        }
     }
 }

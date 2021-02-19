@@ -7,13 +7,16 @@
 
 import Foundation
 
-public class StringError: Error {
+public class StringError: NSObject, LocalizedError {
 
     let message: String
 
     init(_ message: String) {
         self.message = message
     }
+
+    public override var description: String { get { message } }
+    public var errorDescription: String? { get { description } }
 }
 
 public extension String {
