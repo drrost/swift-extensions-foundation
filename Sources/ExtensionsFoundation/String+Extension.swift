@@ -50,10 +50,10 @@ public extension String {
         }
     }
 
-    func regexFirst(_ regex: String) throws -> String? {
+    func regexFirst(_ regex: String) throws -> String {
         let result = try self.regex(regex)
         if result.count == 0 {
-            throw StringError("")
+            throw StringError("No matches found")
         }
         return result[0]
     }

@@ -25,6 +25,18 @@ class StringRegexTests: XCTestCase {
         XCTAssertEqual("NamE", result[0])
     }
 
+    func testFindNameNotFound() {
+        // Given
+        let regex = "(?<=\\\")(.*?)(?=\\\")"
+        let text = "some text with \"NamE that we want to find"
+
+        // When
+        let result = try! text.regex(regex)
+
+        // Then
+        XCTAssertEqual(0, result.count)
+    }
+
     func testThrowsWhenWrongRegex() {
         // Given
         let regex = "(?<=\\\")(.*?)(?=\\)"
@@ -45,5 +57,15 @@ class StringRegexTests: XCTestCase {
 
         // Then
         XCTAssertEqual("NamE", result)
+    }
+
+    func testFindNameFirstNotFound() {
+        // Given
+        let regex = "(?<=\\\")(.*?)(?=\\\")"
+        let text = "some text with \"NamE that we want to find"
+
+        // When
+        // Then
+        XCTAssertThrowsError(try text.regexFirst(regex))
     }
 }
