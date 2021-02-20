@@ -43,4 +43,20 @@ public extension FileManager {
         try FileManager.default.createDirectory(
             at: url, withIntermediateDirectories: true, attributes: nil)
     }
+
+    static func fileSize(_ path: String) -> UInt64 {
+        var fileSize : UInt64
+
+        do {
+            let attr = try FileManager.default.attributesOfItem(atPath: path)
+            fileSize = attr[FileAttributeKey.size] as! UInt64
+
+            //if you convert to NSDictionary, you can get file size old way as well.
+            let dict = attr as NSDictionary
+            fileSize = dict.fileSize()
+            return fileSize
+        } catch {
+            return UInt64.max
+        }
+    }
 }

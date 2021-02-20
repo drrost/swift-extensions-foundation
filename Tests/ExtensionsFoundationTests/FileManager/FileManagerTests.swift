@@ -83,4 +83,20 @@ class FileManagerTests: XCTestCase {
         XCTAssertTrue(FileManager.exists(pathFull))
         try! FileManager.delete(pathRoot)
     }
+
+    func testFileSize() {
+        // Given
+        let path = FileManager
+            .getDocumentsDirectory()
+            .appendingPathComponent("testFileSize.txt")
+
+        // When
+        try! "abc".write(toFile: path, atomically: true, encoding: .utf8)
+        let size = FileManager.fileSize(path)
+
+        // Then
+        XCTAssertEqual(3, size)
+
+        try! FileManager.delete(path)
+    }
 }
