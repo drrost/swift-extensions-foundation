@@ -45,4 +45,20 @@ class StringTests: XCTestCase {
         // Then
         XCTAssertEqual(4, count)
     }
+
+    func testReplaceFirst() {
+        // Given
+        var sql = "UPDATE user SET first_name = ?, last_name = ?, age = ? WHERE first_name = ?;"
+
+        // When
+        sql = sql.replaceFirstOccurrence("?", "'abc'")
+        sql = sql.replaceFirstOccurrence("?", "'xyz'")
+        sql = sql.replaceFirstOccurrence("?", "1")
+        sql = sql.replaceFirstOccurrence("?", "'John'")
+
+        // Then
+        XCTAssertEqual(
+            "UPDATE user SET first_name = 'abc', last_name = 'xyz', age = 1" +
+                " WHERE first_name = 'John';", sql)
+    }
 }

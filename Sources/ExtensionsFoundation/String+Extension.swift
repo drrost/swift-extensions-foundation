@@ -68,4 +68,12 @@ public extension String {
     func occurrencesCount(_ substring: String) -> Int {
         self.components(separatedBy: substring).count - 1
     }
+
+    func replaceFirstOccurrence(
+        _ target: String, _ replaceString: String) -> String {
+        if let range = self.range(of: target) {
+            return self.replacingCharacters(in: range, with: replaceString)
+        }
+        return self
+    }
 }
