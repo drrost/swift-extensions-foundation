@@ -25,6 +25,10 @@ public extension String {
         self.trimmingCharacters(in: .whitespaces)
     }
 
+    func trimN() -> String {
+        self.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+
     func split(_ speparator: String) -> [String] {
         (self as NSString).components(separatedBy: speparator)
     }

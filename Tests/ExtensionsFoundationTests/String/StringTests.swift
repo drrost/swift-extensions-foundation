@@ -23,4 +23,15 @@ class StringTests: XCTestCase {
         // Then
         XCTAssertEqual("abc", trimmed)
     }
+
+    func testTrimWithNewLines() {
+        // Given
+        let string = "\n \n   abc  \n\n"
+
+        // When
+        let trimmed = string.trimN()
+
+        // Then
+        XCTAssertEqual("abc", trimmed)
+    }
 }
