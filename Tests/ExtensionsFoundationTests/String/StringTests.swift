@@ -34,4 +34,15 @@ class StringTests: XCTestCase {
         // Then
         XCTAssertEqual("abc", trimmed)
     }
+
+    func testOccurrencesCount() {
+        // Given
+        let sql = "UPDATE user SET first_name = ?, last_name = ?, age = ? WHERE first_name = ?;"
+
+        // When
+        let count = sql.occurrencesCount("?")
+
+        // Then
+        XCTAssertEqual(4, count)
+    }
 }
