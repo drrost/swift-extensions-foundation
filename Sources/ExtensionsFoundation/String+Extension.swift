@@ -30,7 +30,11 @@ public extension String {
     }
 
     func split(_ speparator: String) -> [String] {
-        (self as NSString).components(separatedBy: speparator)
+        var array = (self as NSString).components(separatedBy: speparator)
+        if array[array.count - 1].count == 0 {
+            array.removeLast()
+        }
+        return array
     }
 
     init(contentsOf path: String) throws {

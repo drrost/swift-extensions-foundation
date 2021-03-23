@@ -54,4 +54,18 @@ class StringTestSplit: XCTestCase {
         XCTAssertEqual(1, array.count)
         XCTAssertEqual("abcdef.xyz.qwerty.xyz.asdfg", array[0])
     }
+
+    func testTrimming() {
+        // Given
+        let string = "openbjamb"
+        let separator = "b"
+
+        // When
+        let array = string.split(separator)
+
+        // Then
+        XCTAssertEqual(2, array.count)
+        XCTAssertEqual("open", array[0])
+        XCTAssertEqual("jam", array[1])
+    }
 }
