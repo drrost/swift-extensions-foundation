@@ -83,4 +83,22 @@ class StringTests: XCTestCase {
         // Then
         XCTAssertTrue(resolved.starts(with: "/Users/"))
     }
+
+    func testStratsWith() {
+        // Given
+        let rootPath = "~/Documents/files".resolve
+
+        // When
+        // Then
+        XCTAssertTrue(rootPath.starts("/Users/"))
+    }
+
+    func testEndsWith() {
+        // Given
+        let rootPath = "~/Documents/files".resolve
+
+        // When
+        // Then
+        XCTAssertTrue(rootPath.ends("/files"))
+    }
 }

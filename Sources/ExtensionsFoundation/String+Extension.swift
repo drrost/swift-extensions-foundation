@@ -88,4 +88,12 @@ public extension String {
     var resolve: String {
         (self as NSString).standardizingPath
     }
+
+    func starts(_ with: String) -> Bool {
+        starts(with: with)
+    }
+
+    func ends(_ with: String) -> Bool {
+        hasSuffix(with)
+    }
 }
