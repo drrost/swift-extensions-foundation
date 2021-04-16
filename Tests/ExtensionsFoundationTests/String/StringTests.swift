@@ -72,4 +72,15 @@ class StringTests: XCTestCase {
         // Then
         XCTAssertEqual("root", last)
     }
+
+    func testResolvePath() {
+        // Given
+        let path = "~/"
+
+        // When
+        let resolved = path.resolve
+
+        // Then
+        XCTAssertTrue(resolved.starts(with: "/Users/"))
+    }
 }

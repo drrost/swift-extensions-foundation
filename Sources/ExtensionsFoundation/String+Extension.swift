@@ -84,4 +84,8 @@ public extension String {
     var lastPathComponent: String {
         (self as NSString).lastPathComponent
     }
+
+    var resolve: String {
+        (self as NSString).standardizingPath
+    }
 }
