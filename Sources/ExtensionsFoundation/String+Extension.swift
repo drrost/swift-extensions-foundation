@@ -80,4 +80,8 @@ public extension String {
         }
         return self
     }
+
+    var lastPathComponent: String {
+        (self as NSString).lastPathComponent
+    }
 }

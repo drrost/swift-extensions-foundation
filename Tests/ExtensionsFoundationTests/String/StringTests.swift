@@ -61,4 +61,15 @@ class StringTests: XCTestCase {
             "UPDATE user SET first_name = 'abc', last_name = 'xyz', age = 1" +
                 " WHERE first_name = 'John';", sql)
     }
+
+    func testLastPahtComponent() {
+        // Given
+        let path = "/tmp/some/root"
+
+        // When
+        let last = path.lastPathComponent
+
+        // Then
+        XCTAssertEqual("root", last)
+    }
 }
