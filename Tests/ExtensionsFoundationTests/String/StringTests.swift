@@ -101,4 +101,15 @@ class StringTests: XCTestCase {
         // Then
         XCTAssertTrue(rootPath.ends("/files"))
     }
+
+    func testDeleteLastPathComponent() {
+        // Given
+        let path = "/tmp/fs_copy_test/8/80/809/809F1665-C4FB-45C5-8FF7-2B08FF9AC7DE"
+
+        // When
+        let cut = path.deleteLastPathComponent()
+        
+        // Then
+        XCTAssertEqual("/tmp/fs_copy_test/8/80/809", cut)
+    }
 }

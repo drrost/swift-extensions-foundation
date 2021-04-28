@@ -85,6 +85,10 @@ public extension String {
         (self as NSString).lastPathComponent
     }
 
+    func deleteLastPathComponent() -> String {
+        (self as NSString).deletingLastPathComponent
+    }
+
     var resolve: String {
         (self as NSString).standardizingPath
     }
