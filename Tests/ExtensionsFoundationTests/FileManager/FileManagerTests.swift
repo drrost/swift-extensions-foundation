@@ -11,6 +11,13 @@ import XCTest
 
 class FileManagerTests: XCTestCase {
 
+    override func setUp() {
+        let filesToDelete = [
+            "/tmp/same_dir"
+        ]
+        try! deleteFiles(filesToDelete)
+    }
+
     // MARK: - Init tests
 
     func testCreation() {
@@ -63,6 +70,19 @@ class FileManagerTests: XCTestCase {
         try! FileManager.delete(path)
     }
 
+    func testCreateTwoFilesInSameDir() {
+        // Given
+        let commonDir = "/tmp/same_dir"
+        let file1 = "file_1.txt"
+        let file2 = "file_2.txt"
+
+        // When
+        try! FileManager.createFile(commonDir.appendingPathComponent(file1))
+        try! FileManager.createFile(commonDir.appendingPathComponent(file2))
+
+        // Then
+    }
+
     func testCreateDirWithIntermediates() {
         // Given
         let pathRoot = FileManager.getDocumentsDirectory().appending("dir1")
@@ -98,5 +118,16 @@ class FileManagerTests: XCTestCase {
         XCTAssertEqual(3, size)
 
         try! FileManager.delete(path)
+    }
+}
+
+extension XCTestCase {
+
+    func deleteFiles(_ files: [String]) throws {
+        for file in files {
+            if FileManager.exists(file) {
+                try FileManager.delete(file)
+            }
+        }
     }
 }
