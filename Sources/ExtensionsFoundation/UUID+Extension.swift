@@ -12,4 +12,8 @@ public extension UUID {
     var toString: String {
         self.uuidString
     }
+
+    init?(_ uuidString: String) {
+        self.init(uuidString: uuidString)
+    }
 }
