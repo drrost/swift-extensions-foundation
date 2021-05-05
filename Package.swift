@@ -20,7 +20,7 @@ let package = Package(
             dependencies: []),
         .target(
             name: "ExtensionXCTest",
-            dependencies: []),
+            dependencies: ["ExtensionsFoundation"]),
         .testTarget(
             name: "ExtensionsFoundationTests",
             dependencies: ["ExtensionsFoundation"]),
