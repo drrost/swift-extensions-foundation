@@ -7,6 +7,8 @@
 
 import XCTest
 
+import ExtensionsFoundation
+
 public extension XCTestCase {
 
     func deleteDirs(_ dirs: [String]) throws {
