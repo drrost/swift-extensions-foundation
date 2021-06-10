@@ -100,4 +100,8 @@ public extension String {
     func ends(_ with: String) -> Bool {
         hasSuffix(with)
     }
+
+    func matches(_ regex: String) -> Bool {
+        range(of: regex, options: .regularExpression, range: nil, locale: nil) != nil
+    }
 }
