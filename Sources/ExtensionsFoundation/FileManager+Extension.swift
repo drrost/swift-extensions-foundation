@@ -44,6 +44,12 @@ public extension FileManager {
             at: url, withIntermediateDirectories: true, attributes: nil)
     }
 
+    static func isDirectory(_ path: String) -> Bool {
+        var isDir: ObjCBool = false
+        FileManager.default.fileExists(atPath: path, isDirectory: &isDir)
+        return isDir.boolValue
+    }
+
     static func fileSize(_ path: String) -> UInt64 {
         var fileSize : UInt64
 

@@ -13,7 +13,8 @@ class FileManagerTests: XCTestCase {
 
     override func setUp() {
         let filesToDelete = [
-            "/tmp/same_dir"
+            "/tmp/same_dir",
+            "/tmp/a/b/c"
         ]
         try! deleteFiles(filesToDelete)
     }
@@ -118,6 +119,30 @@ class FileManagerTests: XCTestCase {
         XCTAssertEqual(3, size)
 
         try! FileManager.delete(path)
+    }
+
+    func testIsDirectory_True() {
+        // Given
+        let path = "/tmp/a/b/c"
+        try! FileManager.createDirectory(path)
+
+        // When
+        let result = FileManager.isDirectory(path)
+
+        // Then
+        XCTAssertTrue(result)
+    }
+
+    func testIsDirectory_False() {
+        // Given
+        let path = "/tmp/a/b/c.txt"
+        try! FileManager.createFile(path)
+
+        // When
+        let result = FileManager.isDirectory(path)
+
+        // Then
+        XCTAssertFalse(result)
     }
 }
 
