@@ -7,7 +7,7 @@
 
 import XCTest
 
-@testable import ExtensionsFoundation
+@testable import RDFoundation
 
 class FileManagerTests: XCTestCase {
 
@@ -29,6 +29,15 @@ class FileManagerTests: XCTestCase {
         // Then
         XCTAssertTrue(path.hasSuffix("/Documents"))
         XCTAssertFalse(path.hasPrefix("file://"))
+
+        let mirror = Mirror(reflecting: FileManager.default)
+
+        for child in mirror.children {
+            print(child.label)
+            print(child.value)
+        }
+
+        print("")
     }
 
     func testCreateFile() {

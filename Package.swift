@@ -3,26 +3,26 @@
 import PackageDescription
 
 let package = Package(
-    name: "ExtensionsFoundation",
+    name: "RDFoundation",
     products: [
         .library(
-            name: "ExtensionsFoundation",
-            targets: ["ExtensionsFoundation"]),
+            name: "RDFoundation",
+            targets: ["RDFoundation"]),
         .library(
-            name: "ExtensionXCTest",
-            targets: ["ExtensionXCTest"]),
+            name: "RDTest",
+            targets: ["RDTest"]),
     ],
     dependencies: [
     ],
     targets: [
         .target(
-            name: "ExtensionsFoundation",
+            name: "RDFoundation",
             dependencies: []),
         .target(
-            name: "ExtensionXCTest",
-            dependencies: ["ExtensionsFoundation"]),
+            name: "RDTest",
+            dependencies: ["RDFoundation"]),
         .testTarget(
-            name: "ExtensionsFoundationTests",
-            dependencies: ["ExtensionsFoundation"]),
+            name: "RDFoundationTests",
+            dependencies: ["RDFoundation"]),
     ]
 )

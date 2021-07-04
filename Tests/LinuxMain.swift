@@ -1,7 +1,7 @@
 import XCTest
 
-import ExtensionsFoundationTests
+import RDFoundationTests
 
 var tests = [XCTestCaseEntry]()
-tests += ExtensionsFoundationTests.allTests()
+tests += RDFoundationTests.allTests()
 XCTMain(tests)

@@ -1,7 +1,7 @@
 import XCTest
-@testable import ExtensionsFoundation
+@testable import RDFoundation
 
-final class ExtensionsFoundationTests: XCTestCase {
+final class RDFoundationTests: XCTestCase {
     
     func testExample() {
         // This is an example of a functional test case.

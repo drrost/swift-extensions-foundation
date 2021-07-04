@@ -7,7 +7,7 @@
 
 import XCTest
 
-@testable import ExtensionsFoundation
+@testable import RDFoundation
 
 class StringTests: XCTestCase {
 

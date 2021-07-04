@@ -7,7 +7,7 @@
 
 import XCTest
 
-import ExtensionsFoundation
+import RDFoundation
 
 public extension XCTestCase {
 
