@@ -112,4 +112,26 @@ class StringTests: XCTestCase {
         // Then
         XCTAssertEqual("/tmp/fs_copy_test/8/80/809", cut)
     }
+
+    func testRemovePrefix_Variable() {
+        // Given
+        var line = "** text"
+
+        // When
+        line.remove(prefix: "** ")
+
+        // Then
+        XCTAssertEqual("text", line)
+    }
+
+    func testRemovePrefix_Constant() {
+        // Given
+        let line = "** text"
+
+        // When
+        let result = line.removeing(prefix: "** ")
+
+        // Then
+        XCTAssertEqual("text", result)
+    }
 }

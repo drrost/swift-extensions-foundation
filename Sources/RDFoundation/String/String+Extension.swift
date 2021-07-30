@@ -104,4 +104,17 @@ public extension String {
     func matches(_ regex: String) -> Bool {
         range(of: regex, options: .regularExpression, range: nil, locale: nil) != nil
     }
+
+    mutating func remove(prefix: String) {
+        if self.hasPrefix(prefix) {
+            self = String(self.dropFirst(prefix.count))
+        }
+    }
+
+    func removeing(prefix: String) -> String {
+        if self.hasPrefix(prefix) {
+            return String(self.dropFirst(prefix.count))
+        }
+        return self
+    }
 }
